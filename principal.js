@@ -1,7 +1,9 @@
 const { cursos, opciones } = require('./bd');
+
 const argv = require('yargs')
     .command('inscribir', 'Inscribirme en un curso', opciones)
     .argv;
+
 
 const fs = require('fs');
 
@@ -30,20 +32,19 @@ if (resultado === undefined && argv.idCurso === undefined) {
     listarCursos();
 
 } else {
-
-    let leerArchivo = (opciones) => {
-        let texto = 'El estudiante : ' + argv.nombre + '\n' +
-            'con cedula : ' + argv.cedula + '\n' +
-            'se ha matriculado en el curso : ' + resultado.nombre + '\n' +
-            'con una duración : ' + resultado.duracion + '\n' +
-            'y con un valor de  : ' + resultado.valor;
-        fs.writeFile('matricula.txt', texto, (err) => {
-            if (err) throw err;
-            console.log('se ha creado el archivo');
-        });
-    }
-    leerArchivo(opciones);
-
+    const express = require('express')
+    const app = express()
+  
+    let texto = 'El estudiante : ' + argv.nombre + '\n' +
+        'con cedula : ' + argv.cedula + '\n' +
+        'se ha matriculado en el curso : ' + resultado.nombre + '\n' +
+        'con una duración : ' + resultado.duracion + '\n' +
+        'y con un valor de  : ' + resultado.valor;
+    app.get('/', function (req, res) {
+        res.send(texto);
+    })
+    console.log('Se mostraron resultados en el navegador en la URL = localhost:3000');
+    app.listen(3000)
 }
 
 

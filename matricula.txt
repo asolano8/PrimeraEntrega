@@ -1,5 +1,5 @@
 El estudiante : Alejandro
 con cedula : 8128238
-se ha matriculado en el curso : Ingles
-con una duración : 50 horas
-y con un valor de  : 50.000
+se ha matriculado en el curso : Matematicas
+con una duración : 20 horas
+y con un valor de  : 20.000
